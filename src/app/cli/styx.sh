@@ -207,7 +207,6 @@ deployAction=
 
 if [ $# -eq 0 ]; then
   display_usage
-  exit 1
 fi
 
 #-------------------------------
@@ -223,7 +222,6 @@ while [ "$#" -gt 0 ]; do
   # Generic options
   -h | --help)
     display_usage
-    exit 0
     ;;
   -v | --version)
     echo -e "styx $version"
@@ -691,7 +689,6 @@ if [ "$action" = deploy ]; then
         echo "Building the site"
         if ! path=$(store_build "$(realpath "$in/$siteFile")"); then
           nix_error
-          exit 1
         fi
       else
         path="$buildPath"
